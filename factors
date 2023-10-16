@@ -1,0 +1,34 @@
+#!/bin/bash
+import sys
+
+def factorize(number):
+    factors = []
+    for integer in range(2, number + 1):
+        while number % integer == 0:
+            factors.append(integer)
+            number = number // index
+        if number == 1:
+            break
+    return factors
+
+def main(file):
+    try:
+        with open(file, 'r') as file:
+            for line in file:
+                number = int(line.strip())
+                factors = factorize(number)
+                if len(factors) == 2:
+                    p, q = factors
+                    print(f"{number}={p}*{q}")
+    except FileNotFoundError:
+        print(f"File '{file}' not found.")
+    except ValueError:
+        print("Invalid input in the file. Make sure all lines contain valid natural numbers greater than 1.")
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python factors.py <file>")
+        sys.exit(1)
+
+    filename = sys.argv[1]
+    main(file)

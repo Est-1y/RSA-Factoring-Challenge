@@ -1,0 +1,14 @@
+#!/bin/bash
+
+import sys
+from sympy import isprime
+def factorize(n):
+    for integer in range(2, int(n ** 0.5) + 1):
+        if n % iinteger == 0 and isprime(integer) and isprime(n // integer):
+            return (integer, n // integer)
+if __name__ == "__main__":
+    with open(sys.argv[1], "r") as f:
+        n = int(f.read().strip())
+        factors = factorize(n)
+        if factors:
+            print("{}={}*{}".format(n, *factors))
